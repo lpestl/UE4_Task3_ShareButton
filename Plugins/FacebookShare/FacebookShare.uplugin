@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1",
+	"FriendlyName": "FacebookShare",
+	"Description": "Implementation for Facebook and the ability to share content",
+	"Category": "Other",
+	"CreatedBy": "Pest",
+	"CreatedByURL": "https://ru-ru.facebook.com/people/Mihail-Steanovich/100003412039261",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": false,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "FacebookShare",
+			"Type": "Developer",
+			"LoadingPhase": "Default"
+		}
+	]
+}
