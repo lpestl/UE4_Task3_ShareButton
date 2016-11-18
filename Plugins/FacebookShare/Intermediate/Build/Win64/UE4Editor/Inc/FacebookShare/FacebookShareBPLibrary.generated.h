@@ -13,7 +13,50 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define FACEBOOKSHARE_FacebookShareBPLibrary_generated_h
 
-#define FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_RPC_WRAPPERS \
+#define UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execGetUrlForFeed) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_app_id); \
+		P_GET_PROPERTY(UStrProperty,Z_Param_redirect_uri); \
+		P_GET_PROPERTY(UStrProperty,Z_Param_picture); \
+		P_GET_PROPERTY(UStrProperty,Z_Param_caption); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FString*)Z_Param__Result=UFacebookShareBPLibrary::GetUrlForFeed(Z_Param_app_id,Z_Param_redirect_uri,Z_Param_picture,Z_Param_caption); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execParseResponseGetAllPhoto) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_responseJson); \
+		P_GET_TARRAY_REF(FString,Z_Param_Out_all_id_photos_out); \
+		P_GET_TARRAY_REF(FString,Z_Param_Out_url_photos); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		UFacebookShareBPLibrary::ParseResponseGetAllPhoto(Z_Param_responseJson,Z_Param_Out_all_id_photos_out,Z_Param_Out_url_photos); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetUriForHttpAllPhoto) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_token); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FString*)Z_Param__Result=UFacebookShareBPLibrary::GetUriForHttpAllPhoto(Z_Param_token); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execCrutchWithCurl) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_token); \
+		P_GET_PROPERTY(UStrProperty,Z_Param_filePath); \
+		P_GET_PROPERTY(UStrProperty,Z_Param_caption); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		UFacebookShareBPLibrary::CrutchWithCurl(Z_Param_token,Z_Param_filePath,Z_Param_caption); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execGetAccessToken) \
 	{ \
@@ -48,7 +91,50 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
+#define UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execGetUrlForFeed) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_app_id); \
+		P_GET_PROPERTY(UStrProperty,Z_Param_redirect_uri); \
+		P_GET_PROPERTY(UStrProperty,Z_Param_picture); \
+		P_GET_PROPERTY(UStrProperty,Z_Param_caption); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FString*)Z_Param__Result=UFacebookShareBPLibrary::GetUrlForFeed(Z_Param_app_id,Z_Param_redirect_uri,Z_Param_picture,Z_Param_caption); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execParseResponseGetAllPhoto) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_responseJson); \
+		P_GET_TARRAY_REF(FString,Z_Param_Out_all_id_photos_out); \
+		P_GET_TARRAY_REF(FString,Z_Param_Out_url_photos); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		UFacebookShareBPLibrary::ParseResponseGetAllPhoto(Z_Param_responseJson,Z_Param_Out_all_id_photos_out,Z_Param_Out_url_photos); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetUriForHttpAllPhoto) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_token); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FString*)Z_Param__Result=UFacebookShareBPLibrary::GetUriForHttpAllPhoto(Z_Param_token); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execCrutchWithCurl) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_token); \
+		P_GET_PROPERTY(UStrProperty,Z_Param_filePath); \
+		P_GET_PROPERTY(UStrProperty,Z_Param_caption); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		UFacebookShareBPLibrary::CrutchWithCurl(Z_Param_token,Z_Param_filePath,Z_Param_caption); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execGetAccessToken) \
 	{ \
@@ -83,7 +169,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_INCLASS_NO_PURE_DECLS \
+#define UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesUFacebookShareBPLibrary(); \
 	friend FACEBOOKSHARE_API class UClass* Z_Construct_UClass_UFacebookShareBPLibrary(); \
@@ -94,7 +180,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_INCLASS \
+#define UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_INCLASS \
 	private: \
 	static void StaticRegisterNativesUFacebookShareBPLibrary(); \
 	friend FACEBOOKSHARE_API class UClass* Z_Construct_UClass_UFacebookShareBPLibrary(); \
@@ -105,7 +191,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_STANDARD_CONSTRUCTORS \
+#define UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UFacebookShareBPLibrary(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UFacebookShareBPLibrary) \
@@ -118,7 +204,7 @@ private: \
 public:
 
 
-#define FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_ENHANCED_CONSTRUCTORS \
+#define UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UFacebookShareBPLibrary(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -131,29 +217,29 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UFacebookShareBPLibrary); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UFacebookShareBPLibrary)
 
 
-#define FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_30_PROLOG
-#define FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_GENERATED_BODY_LEGACY \
+#define UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_30_PROLOG
+#define UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_RPC_WRAPPERS \
-	FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_INCLASS \
-	FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_STANDARD_CONSTRUCTORS \
+	UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_RPC_WRAPPERS \
+	UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_INCLASS \
+	UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_GENERATED_BODY \
+#define UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
-	FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_INCLASS_NO_PURE_DECLS \
-	FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_ENHANCED_CONSTRUCTORS \
+	UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
+	UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_INCLASS_NO_PURE_DECLS \
+	UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h_33_ENHANCED_CONSTRUCTORS \
 static_assert(false, "Unknown access specifier for GENERATED_BODY() macro in class FacebookShareBPLibrary."); \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FbTest_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h
+#define CURRENT_FILE_ID UE4_Task3_ShareButton_Plugins_FacebookShare_Source_FacebookShare_Public_FacebookShareBPLibrary_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

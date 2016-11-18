@@ -32,9 +32,7 @@ class UFacebookShareBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
-	//General Log
-	//DECLARE_LOG_CATEGORY_EXTERN(LogFacebook, Log, All);
-
+public:
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Execute Sample function", Keywords = "FacebookShare sample test testing"), Category = "FacebookShareTesting")
 	static float FacebookShareSampleFunction(float Param);
 
@@ -45,5 +43,14 @@ class UFacebookShareBPLibrary : public UBlueprintFunctionLibrary
 	static bool GetAccessToken(FString response_uri, FString &access_token_out);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Upload Photo On Facebook", Keywords = "FacebookShare upload photo plugin test testing"), Category = "FacebookShareTesting")
-	static void CrutchWithCurl(FString token, FString filePath);
+	static void CrutchWithCurl(FString token, FString filePath, FString caption);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Uri For HTTPRequest All Photo", Keywords = "FacebookShare get all uri http photo plugin test testing"), Category = "FacebookShareTesting")
+	static FString GetUriForHttpAllPhoto(FString token);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Parse Json Response Get All Photo", Keywords = "FacebookShare get all uri Response json photo plugin test testing"), Category = "FacebookShareTesting")
+	static void ParseResponseGetAllPhoto(FString responseJson, TArray<FString> &all_id_photos_out, TArray<FString> &url_photos);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Uri For Feed", Keywords = "FacebookShare feed get url photo plugin test testing"), Category = "FacebookShareTesting")
+	static FString GetUrlForFeed(FString app_id, FString redirect_uri, FString picture, FString caption);
 };

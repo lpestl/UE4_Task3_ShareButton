@@ -6,7 +6,7 @@
 UFacebookShareBPLibrary::UFacebookShareBPLibrary(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)
 {
-
+	
 }
 
 float UFacebookShareBPLibrary::FacebookShareSampleFunction(float Param)
@@ -112,6 +112,104 @@ bool UFacebookShareBPLibrary::GetAccessToken(FString response_uri, FString &acce
 	return completed;
 }
 
-void UFacebookShareBPLibrary::CrutchWithCurl(FString token, FString filePath) {
+void UFacebookShareBPLibrary::CrutchWithCurl(FString token, FString filePath, FString caption) {
+	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*filePath))
+	{
+		//Output it to the engine
+		GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Red, TEXT("Could Not Find File"));
+		return;
+	}
+	IFileManager& FileManager = IFileManager::Get();
+	FString DiskFilename = FileManager.GetFilenameOnDisk(*filePath);
 
+	FString command = TEXT("curl -v -X POST \\ -F \"access_token=");
+	command.Append(token);
+	if (!caption.IsEmpty()) {
+		command.Append(TEXT("\" \\ -F \"caption="));
+		command.Append(caption);
+	}
+	command.Append(TEXT("\" \\ -F \"source=@"));
+	command.Append(filePath);
+	command.Append(TEXT("\" \\ \"https://graph.facebook.com/v2.8/me/photos\" >> curl.log"));
+
+	WinExec(TCHAR_TO_ANSI(*command), SW_HIDE);
+	//system(TCHAR_TO_ANSI(*command));
+	UE_LOG(LogTemp, Warning, TEXT("System command:\r\n%s"), *command);
+}
+
+FString UFacebookShareBPLibrary::GetUriForHttpAllPhoto(FString token) {
+	//This is the url on which to process the request
+	FString uri = TEXT("https://graph.facebook.com/v2.8/");
+	uri.Append(TEXT("me/photos?access_token="));
+	uri.Append(token);
+
+	uri.Append(TEXT("&type=uploaded&fields=id,source"));
+
+	/*TSharedRef<IHttpRequest> Request = Http->CreateRequest();
+	Request->OnProcessRequestComplete().BindUObject(this, &AActorGraphApi::OnResponsePhoto);
+
+	Request->SetURL(uri);
+	Request->SetVerb("GET");
+	Request->ProcessRequest();*/
+	return uri;
+}
+
+void UFacebookShareBPLibrary::ParseResponseGetAllPhoto(FString responseJson, TArray<FString> &all_id_photos_out, TArray<FString> &url_photos) {
+	all_id_photos_out.Empty();
+	url_photos.Empty();
+
+	//Create a pointer to hold the json serialized data
+	TSharedPtr<FJsonObject> JsonObject;
+	//Create a reader pointer to read the json data
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(responseJson);
+
+	//Output it to the engine
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, Response->GetContentAsString());
+	//UE_LOG(LogTemp, Warning, TEXT("Getting json:\r\n%s"), *Response->GetContentAsString());
+
+	//Deserialize the json data given Reader and the actual object to deserialize
+	if (FJsonSerializer::Deserialize(Reader, JsonObject))
+	{
+		//Get the value of the json object by field name
+		TArray<TSharedPtr<FJsonValue>> arr = JsonObject->GetArrayField("data");
+		for (int i = 0; i < arr.Num(); i++) {
+			TSharedPtr<FJsonObject> temp = arr[i]->AsObject();
+			all_id_photos_out.Add(temp->GetStringField("id"));
+			url_photos.Add(temp->GetStringField("source"));
+		}
+	}
+}
+
+FString UFacebookShareBPLibrary::GetUrlForFeed(FString app_id, FString redirect_uri, FString picture, FString caption) {
+	FString uri = TEXT("https://www.facebook.com/dialog/feed?");
+
+	if (app_id.IsEmpty()) {
+		UE_LOG(LogTemp, Error, TEXT("[ERROR] App_ID must be filled"));
+	}
+	else {
+		uri.Append(TEXT("app_id="));
+		uri.Append(app_id);
+	}
+
+	uri.Append(TEXT("&display=page"));
+
+	if (!caption.IsEmpty()) {
+		uri.Append(TEXT("&caption="));
+		uri.Append(caption.Replace(TEXT(" "), TEXT("%20")));
+	}
+
+	if (!picture.IsEmpty()) {
+		uri.Append(TEXT("&picture="));
+		uri.Append(picture);
+	}
+
+	if (redirect_uri.IsEmpty()) {
+		UE_LOG(LogTemp, Warning, TEXT("[Warning] redirect_uri must be filled"));
+	}
+	else {
+		uri.Append(TEXT("&redirect_uri="));
+		uri.Append(redirect_uri);
+	}
+
+	return uri;
 }

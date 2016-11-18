@@ -11,21 +11,57 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCode1FacebookShare() {}
 	void UFacebookShareBPLibrary::StaticRegisterNativesUFacebookShareBPLibrary()
 	{
+		FNativeFunctionRegistrar::RegisterFunction(UFacebookShareBPLibrary::StaticClass(), "CrutchWithCurl",(Native)&UFacebookShareBPLibrary::execCrutchWithCurl);
 		FNativeFunctionRegistrar::RegisterFunction(UFacebookShareBPLibrary::StaticClass(), "FacebookShareSampleFunction",(Native)&UFacebookShareBPLibrary::execFacebookShareSampleFunction);
 		FNativeFunctionRegistrar::RegisterFunction(UFacebookShareBPLibrary::StaticClass(), "GetAccessToken",(Native)&UFacebookShareBPLibrary::execGetAccessToken);
+		FNativeFunctionRegistrar::RegisterFunction(UFacebookShareBPLibrary::StaticClass(), "GetUriForHttpAllPhoto",(Native)&UFacebookShareBPLibrary::execGetUriForHttpAllPhoto);
+		FNativeFunctionRegistrar::RegisterFunction(UFacebookShareBPLibrary::StaticClass(), "GetUrlForFeed",(Native)&UFacebookShareBPLibrary::execGetUrlForFeed);
 		FNativeFunctionRegistrar::RegisterFunction(UFacebookShareBPLibrary::StaticClass(), "GetUrlForLogin",(Native)&UFacebookShareBPLibrary::execGetUrlForLogin);
+		FNativeFunctionRegistrar::RegisterFunction(UFacebookShareBPLibrary::StaticClass(), "ParseResponseGetAllPhoto",(Native)&UFacebookShareBPLibrary::execParseResponseGetAllPhoto);
 	}
-	IMPLEMENT_CLASS(UFacebookShareBPLibrary, 2627624309);
+	IMPLEMENT_CLASS(UFacebookShareBPLibrary, 2276217290);
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
 	ENGINE_API class UClass* Z_Construct_UClass_UBlueprintFunctionLibrary();
 
+	FACEBOOKSHARE_API class UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_CrutchWithCurl();
 	FACEBOOKSHARE_API class UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_FacebookShareSampleFunction();
 	FACEBOOKSHARE_API class UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_GetAccessToken();
+	FACEBOOKSHARE_API class UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_GetUriForHttpAllPhoto();
+	FACEBOOKSHARE_API class UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_GetUrlForFeed();
 	FACEBOOKSHARE_API class UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_GetUrlForLogin();
+	FACEBOOKSHARE_API class UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_ParseResponseGetAllPhoto();
 	FACEBOOKSHARE_API class UClass* Z_Construct_UClass_UFacebookShareBPLibrary_NoRegister();
 	FACEBOOKSHARE_API class UClass* Z_Construct_UClass_UFacebookShareBPLibrary();
 	FACEBOOKSHARE_API class UPackage* Z_Construct_UPackage__Script_FacebookShare();
+	UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_CrutchWithCurl()
+	{
+		struct FacebookShareBPLibrary_eventCrutchWithCurl_Parms
+		{
+			FString token;
+			FString filePath;
+			FString caption;
+		};
+		UObject* Outer=Z_Construct_UClass_UFacebookShareBPLibrary();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("CrutchWithCurl"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04022401, 65535, sizeof(FacebookShareBPLibrary_eventCrutchWithCurl_Parms));
+			UProperty* NewProp_caption = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("caption"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(caption, FacebookShareBPLibrary_eventCrutchWithCurl_Parms), 0x0010000000000080);
+			UProperty* NewProp_filePath = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("filePath"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(filePath, FacebookShareBPLibrary_eventCrutchWithCurl_Parms), 0x0010000000000080);
+			UProperty* NewProp_token = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("token"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(token, FacebookShareBPLibrary_eventCrutchWithCurl_Parms), 0x0010000000000080);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("FacebookShareTesting"));
+			MetaData->SetValue(ReturnFunction, TEXT("DisplayName"), TEXT("Upload Photo On Facebook"));
+			MetaData->SetValue(ReturnFunction, TEXT("Keywords"), TEXT("FacebookShare upload photo plugin test testing"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Public/FacebookShareBPLibrary.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_FacebookShareSampleFunction()
 	{
 		struct FacebookShareBPLibrary_eventFacebookShareSampleFunction_Parms
@@ -48,7 +84,6 @@ void EmptyLinkFunctionForGeneratedCode1FacebookShare() {}
 			MetaData->SetValue(ReturnFunction, TEXT("DisplayName"), TEXT("Execute Sample function"));
 			MetaData->SetValue(ReturnFunction, TEXT("Keywords"), TEXT("FacebookShare sample test testing"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Public/FacebookShareBPLibrary.h"));
-			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("General Log\nDECLARE_LOG_CATEGORY_EXTERN(LogFacebook, Log, All);"));
 #endif
 		}
 		return ReturnFunction;
@@ -77,6 +112,64 @@ void EmptyLinkFunctionForGeneratedCode1FacebookShare() {}
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("FacebookShareTesting"));
 			MetaData->SetValue(ReturnFunction, TEXT("DisplayName"), TEXT("Get Access Token"));
 			MetaData->SetValue(ReturnFunction, TEXT("Keywords"), TEXT("FacebookShare parse response get access token url plugin test testing"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Public/FacebookShareBPLibrary.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_GetUriForHttpAllPhoto()
+	{
+		struct FacebookShareBPLibrary_eventGetUriForHttpAllPhoto_Parms
+		{
+			FString token;
+			FString ReturnValue;
+		};
+		UObject* Outer=Z_Construct_UClass_UFacebookShareBPLibrary();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("GetUriForHttpAllPhoto"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04022401, 65535, sizeof(FacebookShareBPLibrary_eventGetUriForHttpAllPhoto_Parms));
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(ReturnValue, FacebookShareBPLibrary_eventGetUriForHttpAllPhoto_Parms), 0x0010000000000580);
+			UProperty* NewProp_token = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("token"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(token, FacebookShareBPLibrary_eventGetUriForHttpAllPhoto_Parms), 0x0010000000000080);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("FacebookShareTesting"));
+			MetaData->SetValue(ReturnFunction, TEXT("DisplayName"), TEXT("Get Uri For HTTPRequest All Photo"));
+			MetaData->SetValue(ReturnFunction, TEXT("Keywords"), TEXT("FacebookShare get all uri http photo plugin test testing"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Public/FacebookShareBPLibrary.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_GetUrlForFeed()
+	{
+		struct FacebookShareBPLibrary_eventGetUrlForFeed_Parms
+		{
+			FString app_id;
+			FString redirect_uri;
+			FString picture;
+			FString caption;
+			FString ReturnValue;
+		};
+		UObject* Outer=Z_Construct_UClass_UFacebookShareBPLibrary();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("GetUrlForFeed"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04022401, 65535, sizeof(FacebookShareBPLibrary_eventGetUrlForFeed_Parms));
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(ReturnValue, FacebookShareBPLibrary_eventGetUrlForFeed_Parms), 0x0010000000000580);
+			UProperty* NewProp_caption = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("caption"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(caption, FacebookShareBPLibrary_eventGetUrlForFeed_Parms), 0x0010000000000080);
+			UProperty* NewProp_picture = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("picture"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(picture, FacebookShareBPLibrary_eventGetUrlForFeed_Parms), 0x0010000000000080);
+			UProperty* NewProp_redirect_uri = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("redirect_uri"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(redirect_uri, FacebookShareBPLibrary_eventGetUrlForFeed_Parms), 0x0010000000000080);
+			UProperty* NewProp_app_id = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("app_id"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(app_id, FacebookShareBPLibrary_eventGetUrlForFeed_Parms), 0x0010000000000080);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("FacebookShareTesting"));
+			MetaData->SetValue(ReturnFunction, TEXT("DisplayName"), TEXT("Get Uri For Feed"));
+			MetaData->SetValue(ReturnFunction, TEXT("Keywords"), TEXT("FacebookShare feed get url photo plugin test testing"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Public/FacebookShareBPLibrary.h"));
 #endif
 		}
@@ -116,6 +209,36 @@ void EmptyLinkFunctionForGeneratedCode1FacebookShare() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_UFacebookShareBPLibrary_ParseResponseGetAllPhoto()
+	{
+		struct FacebookShareBPLibrary_eventParseResponseGetAllPhoto_Parms
+		{
+			FString responseJson;
+			TArray<FString> all_id_photos_out;
+			TArray<FString> url_photos;
+		};
+		UObject* Outer=Z_Construct_UClass_UFacebookShareBPLibrary();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("ParseResponseGetAllPhoto"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04422401, 65535, sizeof(FacebookShareBPLibrary_eventParseResponseGetAllPhoto_Parms));
+			UProperty* NewProp_url_photos = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("url_photos"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(url_photos, FacebookShareBPLibrary_eventParseResponseGetAllPhoto_Parms), 0x0010000000000180);
+			UProperty* NewProp_url_photos_Inner = new(EC_InternalUseOnlyConstructor, NewProp_url_photos, TEXT("url_photos"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
+			UProperty* NewProp_all_id_photos_out = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("all_id_photos_out"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(all_id_photos_out, FacebookShareBPLibrary_eventParseResponseGetAllPhoto_Parms), 0x0010000000000180);
+			UProperty* NewProp_all_id_photos_out_Inner = new(EC_InternalUseOnlyConstructor, NewProp_all_id_photos_out, TEXT("all_id_photos_out"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
+			UProperty* NewProp_responseJson = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("responseJson"), RF_Public|RF_Transient|RF_MarkAsNative) UStrProperty(CPP_PROPERTY_BASE(responseJson, FacebookShareBPLibrary_eventParseResponseGetAllPhoto_Parms), 0x0010000000000080);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("FacebookShareTesting"));
+			MetaData->SetValue(ReturnFunction, TEXT("DisplayName"), TEXT("Parse Json Response Get All Photo"));
+			MetaData->SetValue(ReturnFunction, TEXT("Keywords"), TEXT("FacebookShare get all uri Response json photo plugin test testing"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Public/FacebookShareBPLibrary.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_UFacebookShareBPLibrary_NoRegister()
 	{
 		return UFacebookShareBPLibrary::StaticClass();
@@ -133,13 +256,21 @@ void EmptyLinkFunctionForGeneratedCode1FacebookShare() {}
 				UObjectForceRegistration(OuterClass);
 				OuterClass->ClassFlags |= 0x20000080;
 
+				OuterClass->LinkChild(Z_Construct_UFunction_UFacebookShareBPLibrary_CrutchWithCurl());
 				OuterClass->LinkChild(Z_Construct_UFunction_UFacebookShareBPLibrary_FacebookShareSampleFunction());
 				OuterClass->LinkChild(Z_Construct_UFunction_UFacebookShareBPLibrary_GetAccessToken());
+				OuterClass->LinkChild(Z_Construct_UFunction_UFacebookShareBPLibrary_GetUriForHttpAllPhoto());
+				OuterClass->LinkChild(Z_Construct_UFunction_UFacebookShareBPLibrary_GetUrlForFeed());
 				OuterClass->LinkChild(Z_Construct_UFunction_UFacebookShareBPLibrary_GetUrlForLogin());
+				OuterClass->LinkChild(Z_Construct_UFunction_UFacebookShareBPLibrary_ParseResponseGetAllPhoto());
 
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UFacebookShareBPLibrary_FacebookShareSampleFunction(), "FacebookShareSampleFunction"); // 3284971831
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UFacebookShareBPLibrary_CrutchWithCurl(), "CrutchWithCurl"); // 2878199543
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UFacebookShareBPLibrary_FacebookShareSampleFunction(), "FacebookShareSampleFunction"); // 687615643
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UFacebookShareBPLibrary_GetAccessToken(), "GetAccessToken"); // 1147762559
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UFacebookShareBPLibrary_GetUriForHttpAllPhoto(), "GetUriForHttpAllPhoto"); // 3382176510
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UFacebookShareBPLibrary_GetUrlForFeed(), "GetUrlForFeed"); // 2693582065
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UFacebookShareBPLibrary_GetUrlForLogin(), "GetUrlForLogin"); // 597237146
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UFacebookShareBPLibrary_ParseResponseGetAllPhoto(), "ParseResponseGetAllPhoto"); // 2550918739
 				OuterClass->StaticLink();
 #if WITH_METADATA
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
@@ -162,8 +293,8 @@ void EmptyLinkFunctionForGeneratedCode1FacebookShare() {}
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/FacebookShare")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000080);
 			FGuid Guid;
-			Guid.A = 0x4BE88C06;
-			Guid.B = 0x4B126495;
+			Guid.A = 0x77715998;
+			Guid.B = 0x7F5F0D4C;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
